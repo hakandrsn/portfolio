@@ -1,5 +1,0 @@
-﻿{
-  "mainLanguages": ["JavaScript", "TypeScript"],
-  "subLanguages": ["Java", "Kotlin", "Swift", "Objective-C"],
-  "frameworks": ["React", "React-Native", "NextJS", "NestJS","Expo", "Redux", "i18next", "Tailwindcss"]
-}
