@@ -1,0 +1,76 @@
+﻿.projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 150px;
+}
+
+.project-card {
+    width: 100%;
+    max-width: 300px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-card.hovered {
+    transform: scale(1.05);
+    border-color: #333;
+}
+
+.project-name {
+    font-size: 1.5rem;
+    margin-bottom: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    padding-bottom: 5px; /* Add padding to create space for the hover text */
+}
+
+.project-name:hover::after {
+    content: attr(data-full-text);
+    position: absolute;
+    white-space: normal;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 5px;
+    z-index: 10; /* Ensure it appears above other elements */
+    width: max-content;
+    max-width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    top: 100%; /* Position it below the project name */
+    left: 0;
+    transform: translateY(5px); /* Adjust the position to align properly */
+}
+.project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.project-description {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.project-technologies {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.project-technologies li {
+    background-color: #C1CFA1;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: #1a1a1a;
+}
