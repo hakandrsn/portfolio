@@ -17,7 +17,8 @@
       "Code-push",
       "React-hook-form",
       "Axios"
-    ]
+    ],
+    "url": "https://www.garantibbvayatirim.com.tr/islem-kanallarimiz/garanti-bbva-etrader?gad_source=1&gclid=CjwKCAjw9p24BhB_EiwA8ID5BrgBpBGVLYpXz7C1Xk5oGGf5cNESWuv1jNShUoJpulV2ZGKn23Ni3hoCO-cQAvD_BwE"
   },
   {
     "id": 2,
@@ -134,7 +135,8 @@
       "React",
       "TypeScript",
       "CSS"
-    ]
+    ],
+    "url": "https://github.com/askadro/askadro-api"
   },
   {
     "id": 8,
@@ -146,6 +148,7 @@
       "TypeScript",
       "NodeJS",
       "Commander"
-    ]
+    ],
+    "url": "https://github.com/hakandrsn/hkn-cli"
   }
 ]

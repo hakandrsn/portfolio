@@ -7,7 +7,7 @@ export const Whatiuse = () => {
             <div className="space-y-6">
                 <div className="p-6 border rounded-lg">
                     <h3 className="text-xl font-semibold mb-2">Ana Diller</h3>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 justify-center">
                         {whatiuseData.mainLanguages.map((lang, index) => (
                             <span key={index} className="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded">
                                 {lang}
@@ -16,8 +16,8 @@ export const Whatiuse = () => {
                     </div>
                 </div>
                 <div className="p-6 border rounded-lg">
-                    <h3 className="text-xl font-semibold mb-2">Alt Diller</h3>
-                    <div className="flex flex-wrap gap-2">
+                    <h3 className="text-xl font-semibold mb-2">İkincil diller</h3>
+                    <div className="flex flex-wrap gap-2 justify-center">
                         {whatiuseData.subLanguages.map((lang, index) => (
                             <span key={index} className="bg-green-100 text-green-800 text-sm font-medium px-2.5 py-0.5 rounded">
                                 {lang}
@@ -25,9 +25,9 @@ export const Whatiuse = () => {
                         ))}
                     </div>
                 </div>
-                <div className="p-6 border rounded-lg">
-                    <h3 className="text-xl font-semibold mb-2">Ana Frameworkler</h3>
-                    <div className="flex flex-wrap gap-2">
+                <div className="p-6 border rounded-lg ">
+                    <h3 className="text-xl font-semibold mb-2">Frameworkler</h3>
+                    <div className="flex flex-wrap gap-2 justify-center">
                         {whatiuseData.frameworks.map((framework, index) => (
                             <span key={index} className="bg-purple-100 text-purple-800 text-sm font-medium px-2.5 py-0.5 rounded">
                                 {framework}

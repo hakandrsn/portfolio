@@ -74,3 +74,8 @@
     font-size: 0.9rem;
     color: #1a1a1a;
 }
+
+.no-link-style {
+    text-decoration: none;
+    color: inherit;
+}
