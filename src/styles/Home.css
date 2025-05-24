@@ -4,6 +4,7 @@
   margin: 0 auto;
   padding: 2rem;
   min-height: calc(100vh - 200px);
+  box-sizing: border-box;
 }
 
 .home-header {
@@ -17,6 +18,7 @@
   color: var(--text-primary);
   position: relative;
   display: inline-block;
+  word-wrap: break-word;
 }
 
 .home-title::after {
@@ -40,11 +42,13 @@
 /* Sudoku Oyunu Stilleri */
 .sudoku-container {
   max-width: 500px;
+  width: 100%;
   margin: 2rem auto;
   padding: 1rem;
   background-color: var(--card-bg);
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 .sudoku-header {
@@ -83,6 +87,9 @@
   overflow: hidden;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   padding: 3px;
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 100%;
 }
 
 .sudoku-row {
@@ -102,6 +109,7 @@
   transition: all 0.2s ease;
   border: 1px solid rgba(200, 200, 200, 0.3);
   position: relative;
+  touch-action: manipulation;
 }
 
 .sudoku-cell:hover {
@@ -179,11 +187,13 @@
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .sudoku-number {
-  width: 40px;
-  height: 40px;
+  width: 100%;
+  aspect-ratio: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -197,6 +207,7 @@
   transition: all 0.2s ease;
   color: #333;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  touch-action: manipulation;
 }
 
 .sudoku-number:hover {
@@ -217,6 +228,8 @@
   justify-content: space-between;
   gap: 1rem;
   margin-top: 1rem;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 .sudoku-button {
@@ -235,6 +248,8 @@
   transition: all 0.2s ease;
   color: #555;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-width: 80px;
+  touch-action: manipulation;
 }
 
 .sudoku-button:hover {
@@ -508,8 +523,51 @@
 }
 
 @media (max-width: 768px) {
+  .home-container {
+    padding: 1rem;
+  }
+
+  .home-title {
+    font-size: 2rem;
+  }
+
+  .home-subtitle {
+    font-size: 1rem;
+  }
+
+  .sudoku-container {
+    padding: 0.75rem;
+    margin: 1rem auto;
+  }
+
+  .sudoku-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
   .sudoku-cell {
     font-size: 1rem;
+  }
+  
+  .sudoku-number {
+    font-size: 1rem;
+  }
+  
+  .sudoku-button {
+    font-size: 0.9rem;
+    padding: 0.7rem 1rem;
+  }
+  
+  .sudoku-numbers {
+    padding: 0.75rem;
+    gap: 0.3rem;
+  }
+  
+  .sudoku-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
   
   .number-button,
@@ -530,6 +588,11 @@
   
   .sudoku-controls {
     width: 100%;
+  }
+
+  .sudoku-status.success {
+    font-size: 0.9rem;
+    padding: 0.75rem;
   }
 }
 
@@ -577,8 +640,53 @@
 }
 
 @media (max-width: 480px) {
+  .home-container {
+    padding: 0.75rem;
+  }
+
+  .home-title {
+    font-size: 1.8rem;
+  }
+
+  .home-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .sudoku-container {
+    padding: 0.5rem;
+    margin: 0.75rem auto;
+  }
+
+  .sudoku-title {
+    font-size: 1.2rem;
+  }
+
+  .sudoku-timer {
+    font-size: 1rem;
+    padding: 0.3rem 0.6rem;
+  }
+
   .sudoku-cell {
     font-size: 0.8rem;
+  }
+  
+  .sudoku-number {
+    font-size: 0.9rem;
+  }
+  
+  .sudoku-numbers {
+    padding: 0.5rem;
+    gap: 0.2rem;
+  }
+  
+  .sudoku-actions {
+    gap: 0.3rem;
+  }
+  
+  .sudoku-button {
+    font-size: 0.8rem;
+    padding: 0.6rem 0.8rem;
+    min-width: 70px;
   }
   
   .number-button,
@@ -597,30 +705,18 @@
     gap: 0.3rem;
   }
   
-  .home-container {
-    padding: 1rem;
-  }
-  
-  .sudoku-container {
+  .sudoku-status.success {
+    font-size: 0.8rem;
     padding: 0.5rem;
-  }
-  
-  .game-status {
-    padding: 0.3rem 0.5rem;
-    font-size: 0.9rem;
-  }
-  
-  .sudoku-numbers {
-    grid-template-columns: repeat(9, 1fr);
-  }
-  
-  .sudoku-actions {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.3rem;
   }
-  
-  .sudoku-button {
-    padding: 0.5rem;
-    font-size: 0.9rem;
-  }
+}
+
+/* Mobil için ek stil düzenlemeleri */
+.mobile-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }

@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { FaClock, FaCheck, FaEraser, FaUndo, FaLightbulb } from 'react-icons/fa';
 import '../styles/Home.css';
 import { generateSudoku, isSameDay } from '../utils/sudokuGenerator';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
 // Tip tanımlamaları
 type SudokuGrid = number[][];
@@ -29,6 +30,10 @@ function Home() {
   const [timer, setTimer] = useState<number>(0);
   const [isActive, setIsActive] = useState<boolean>(false);
   const [errors, setErrors] = useState<ErrorsMap>({});
+  
+  // Mobil cihaz kontrolü için medya sorgusu
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  const isSmallMobile = useMediaQuery('(max-width: 480px)');
   
   // Günlük sudoku oluştur
   const createDailySudoku = useCallback(() => {
@@ -153,6 +158,19 @@ function Home() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedCell, isComplete]);
+  
+  // Dokunmatik cihazlar için dokunma olaylarını önleme
+  useEffect(() => {
+    // Çift dokunma ile yakınlaştırmayı önle
+    const preventZoom = (e: TouchEvent) => {
+      if (e.touches.length > 1) {
+        e.preventDefault();
+      }
+    };
+    
+    document.addEventListener('touchstart', preventZoom, { passive: false });
+    return () => document.removeEventListener('touchstart', preventZoom);
+  }, []);
   
   // Hücre seçme işlemi
   const handleCellSelect = (row: number, col: number): void => {
@@ -339,6 +357,8 @@ function Home() {
                   key={`${rowIndex}-${colIndex}`}
                   className={getCellClass(rowIndex, colIndex)}
                   onClick={() => handleCellSelect(rowIndex, colIndex)}
+                  onTouchStart={() => handleCellSelect(rowIndex, colIndex)}
+                  aria-label={`Hücre ${rowIndex+1}-${colIndex+1}, değer: ${cell !== 0 ? cell : 'boş'}`}
                 >
                   {cell !== 0 ? cell : ''}
                 </div>
@@ -352,6 +372,9 @@ function Home() {
                 key={num}
                 className="sudoku-number"
                 onClick={() => handleNumberInput(num)}
+                onTouchStart={() => handleNumberInput(num)}
+                aria-label={`Sayı ${num}`}
+                role="button"
               >
                 {num}
               </div>
@@ -359,14 +382,26 @@ function Home() {
           </div>
           
           <div className="sudoku-actions">
-            <button className="sudoku-button" onClick={handleErase}>
-              <FaEraser /> Sil
+            <button 
+              className="sudoku-button" 
+              onClick={handleErase}
+              aria-label="Sil"
+            >
+              <FaEraser /> {!isSmallMobile && 'Sil'}
             </button>
-            <button className="sudoku-button" onClick={handleReset}>
-              <FaUndo /> Sıfırla
+            <button 
+              className="sudoku-button" 
+              onClick={handleReset}
+              aria-label="Sıfırla"
+            >
+              <FaUndo /> {!isSmallMobile && 'Sıfırla'}
             </button>
-            <button className="sudoku-button" onClick={handleHint}>
-              <FaLightbulb /> İpucu
+            <button 
+              className="sudoku-button" 
+              onClick={handleHint}
+              aria-label="İpucu"
+            >
+              <FaLightbulb /> {!isSmallMobile && 'İpucu'}
             </button>
           </div>
           
@@ -376,7 +411,15 @@ function Home() {
           
           {isComplete && (
             <div className="sudoku-status success">
-              <FaCheck /> Tebrikler! Bugün zihnindesiniz. Süreniz: {formatTime(timer)}
+              <FaCheck /> 
+              {isMobile ? (
+                <>
+                  <span>Tebrikler!</span>
+                  <span>Süreniz: {formatTime(timer)}</span>
+                </>
+              ) : (
+                <>Tebrikler! Bugün zihnindesiniz. Süreniz: {formatTime(timer)}</>
+              )}
             </div>
           )}
         </div>
