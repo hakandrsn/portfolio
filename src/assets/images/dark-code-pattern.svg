@@ -1,0 +1,80 @@
+<svg width="1440" height="800" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="800" fill="#1a1d21"/>
+  
+  <!-- Kod Desenleri -->
+  <g opacity="0.07">
+    <!-- HTML/XML Etiketleri -->
+    <text x="100" y="50" font-family="monospace" font-size="14" fill="#61dafb">&lt;div class="container"&gt;</text>
+    <text x="120" y="70" font-family="monospace" font-size="14" fill="#61dafb">&lt;header&gt;</text>
+    <text x="140" y="90" font-family="monospace" font-size="14" fill="#61dafb">&lt;h1&gt;Portfolio&lt;/h1&gt;</text>
+    <text x="120" y="110" font-family="monospace" font-size="14" fill="#61dafb">&lt;/header&gt;</text>
+    
+    <!-- JavaScript Kodu -->
+    <text x="800" y="150" font-family="monospace" font-size="14" fill="#61dafb">function initApp() {</text>
+    <text x="820" y="170" font-family="monospace" font-size="14" fill="#61dafb">  const data = fetchData();</text>
+    <text x="820" y="190" font-family="monospace" font-size="14" fill="#61dafb">  renderUI(data);</text>
+    <text x="800" y="210" font-family="monospace" font-size="14" fill="#61dafb">}</text>
+    
+    <!-- CSS Kodu -->
+    <text x="200" y="250" font-family="monospace" font-size="14" fill="#61dafb">.container {</text>
+    <text x="220" y="270" font-family="monospace" font-size="14" fill="#61dafb">  display: flex;</text>
+    <text x="220" y="290" font-family="monospace" font-size="14" fill="#61dafb">  flex-direction: column;</text>
+    <text x="200" y="310" font-family="monospace" font-size="14" fill="#61dafb">}</text>
+    
+    <!-- React Komponenti -->
+    <text x="600" y="350" font-family="monospace" font-size="14" fill="#61dafb">const Profile = () => {</text>
+    <text x="620" y="370" font-family="monospace" font-size="14" fill="#61dafb">  const [data, setData] = useState(null);</text>
+    <text x="620" y="390" font-family="monospace" font-size="14" fill="#61dafb">  return (</text>
+    <text x="640" y="410" font-family="monospace" font-size="14" fill="#61dafb">&lt;div className="profile"&gt;</text>
+    <text x="640" y="430" font-family="monospace" font-size="14" fill="#61dafb">&lt;/div&gt;</text>
+    <text x="620" y="450" font-family="monospace" font-size="14" fill="#61dafb">  );</text>
+    <text x="600" y="470" font-family="monospace" font-size="14" fill="#61dafb">}</text>
+    
+    <!-- TypeScript Interface -->
+    <text x="300" y="520" font-family="monospace" font-size="14" fill="#61dafb">interface User {</text>
+    <text x="320" y="540" font-family="monospace" font-size="14" fill="#61dafb">  name: string;</text>
+    <text x="320" y="560" font-family="monospace" font-size="14" fill="#61dafb">  skills: string[];</text>
+    <text x="320" y="580" font-family="monospace" font-size="14" fill="#61dafb">  experience: Experience[];</text>
+    <text x="300" y="600" font-family="monospace" font-size="14" fill="#61dafb">}</text>
+    
+    <!-- JSON Verisi -->
+    <text x="900" y="520" font-family="monospace" font-size="14" fill="#61dafb">{</text>
+    <text x="920" y="540" font-family="monospace" font-size="14" fill="#61dafb">"name": "Hakan Dursun",</text>
+    <text x="920" y="560" font-family="monospace" font-size="14" fill="#61dafb">"title": "Senior Developer",</text>
+    <text x="920" y="580" font-family="monospace" font-size="14" fill="#61dafb">"skills": ["React", "TypeScript"]</text>
+    <text x="900" y="600" font-family="monospace" font-size="14" fill="#61dafb">}</text>
+    
+    <!-- Git Komutları -->
+    <text x="100" y="650" font-family="monospace" font-size="14" fill="#61dafb">git add .</text>
+    <text x="100" y="670" font-family="monospace" font-size="14" fill="#61dafb">git commit -m "Update profile"</text>
+    <text x="100" y="690" font-family="monospace" font-size="14" fill="#61dafb">git push origin main</text>
+  </g>
+  
+  <!-- Dekoratif Elementler -->
+  <circle cx="50" cy="50" r="20" fill="#61dafb" opacity="0.1"/>
+  <circle cx="1390" cy="750" r="30" fill="#61dafb" opacity="0.1"/>
+  <circle cx="700" cy="100" r="15" fill="#61dafb" opacity="0.1"/>
+  <circle cx="1200" cy="300" r="25" fill="#61dafb" opacity="0.1"/>
+  <circle cx="300" cy="700" r="20" fill="#61dafb" opacity="0.1"/>
+  
+  <!-- Bağlantı Çizgileri -->
+  <line x1="50" y1="50" x2="300" y2="200" stroke="#61dafb" stroke-width="1" opacity="0.05"/>
+  <line x1="700" y1="100" x2="900" y2="300" stroke="#61dafb" stroke-width="1" opacity="0.05"/>
+  <line x1="1200" y1="300" x2="1000" y2="500" stroke="#61dafb" stroke-width="1" opacity="0.05"/>
+  <line x1="300" y1="700" x2="500" y2="600" stroke="#61dafb" stroke-width="1" opacity="0.05"/>
+  <line x1="1390" y1="750" x2="1200" y2="600" stroke="#61dafb" stroke-width="1" opacity="0.05"/>
+  
+  <!-- Parçacıklar -->
+  <circle cx="200" cy="150" r="2" fill="#61dafb" opacity="0.3"/>
+  <circle cx="400" cy="350" r="2" fill="#61dafb" opacity="0.3"/>
+  <circle cx="600" cy="250" r="2" fill="#61dafb" opacity="0.3"/>
+  <circle cx="800" cy="450" r="2" fill="#61dafb" opacity="0.3"/>
+  <circle cx="1000" cy="150" r="2" fill="#61dafb" opacity="0.3"/>
+  <circle cx="1200" cy="550" r="2" fill="#61dafb" opacity="0.3"/>
+  <circle cx="250" cy="650" r="2" fill="#61dafb" opacity="0.3"/>
+  <circle cx="450" cy="750" r="2" fill="#61dafb" opacity="0.3"/>
+  <circle cx="650" cy="550" r="2" fill="#61dafb" opacity="0.3"/>
+  <circle cx="850" cy="350" r="2" fill="#61dafb" opacity="0.3"/>
+  <circle cx="1050" cy="250" r="2" fill="#61dafb" opacity="0.3"/>
+  <circle cx="1250" cy="450" r="2" fill="#61dafb" opacity="0.3"/>
+</svg>

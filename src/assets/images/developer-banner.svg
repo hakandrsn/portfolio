@@ -1,0 +1,105 @@
+<svg width="1200" height="300" viewBox="0 0 1200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Arka plan -->
+  <rect width="1200" height="300" fill="#2c4a6b" />
+  
+  <!-- Kod Editörü Görünümü -->
+  <rect x="50" y="50" width="500" height="200" rx="5" fill="#1e1e1e" />
+  
+  <!-- Editör Başlık Çubuğu -->
+  <rect x="50" y="50" width="500" height="25" rx="5" fill="#333333" />
+  <circle cx="65" cy="62.5" r="5" fill="#ff6058" />
+  <circle cx="85" cy="62.5" r="5" fill="#ffbd2e" />
+  <circle cx="105" cy="62.5" r="5" fill="#28ca41" />
+  <text x="250" y="67" font-family="monospace" font-size="12" fill="#cccccc">profile.tsx</text>
+  
+  <!-- Kod Satırları -->
+  <text x="60" y="100" font-family="monospace" font-size="12" fill="#569cd6">import</text>
+  <text x="105" y="100" font-family="monospace" font-size="12" fill="#c8c8c8">React, { useState, useEffect } </text>
+  <text x="320" y="100" font-family="monospace" font-size="12" fill="#569cd6">from</text>
+  <text x="355" y="100" font-family="monospace" font-size="12" fill="#ce9178">'react'</text>
+  <text x="405" y="100" font-family="monospace" font-size="12" fill="#c8c8c8">;</text>
+  
+  <text x="60" y="120" font-family="monospace" font-size="12" fill="#569cd6">import</text>
+  <text x="105" y="120" font-family="monospace" font-size="12" fill="#c8c8c8">type { ProfileData } </text>
+  <text x="260" y="120" font-family="monospace" font-size="12" fill="#569cd6">from</text>
+  <text x="295" y="120" font-family="monospace" font-size="12" fill="#ce9178">'../types/profile'</text>
+  <text x="405" y="120" font-family="monospace" font-size="12" fill="#c8c8c8">;</text>
+  
+  <text x="60" y="150" font-family="monospace" font-size="12" fill="#569cd6">function</text>
+  <text x="110" y="150" font-family="monospace" font-size="12" fill="#dcdcaa">Profile</text>
+  <text x="155" y="150" font-family="monospace" font-size="12" fill="#c8c8c8">() {</text>
+  
+  <text x="70" y="170" font-family="monospace" font-size="12" fill="#569cd6">const</text>
+  <text x="105" y="170" font-family="monospace" font-size="12" fill="#c8c8c8">[profileData, setProfileData] = </text>
+  <text x="300" y="170" font-family="monospace" font-size="12" fill="#dcdcaa">useState</text>
+  <text x="350" y="170" font-family="monospace" font-size="12" fill="#c8c8c8"><ProfileData | null>(null);</text>
+  
+  <text x="70" y="190" font-family="monospace" font-size="12" fill="#c586c0">return</text>
+  <text x="115" y="190" font-family="monospace" font-size="12" fill="#c8c8c8">(</text>
+  <text x="125" y="190" font-family="monospace" font-size="12" fill="#c8c8c8">/* ... */</text>
+  <text x="175" y="190" font-family="monospace" font-size="12" fill="#c8c8c8">);</text>
+  
+  <text x="60" y="210" font-family="monospace" font-size="12" fill="#c8c8c8">}</text>
+  
+  <text x="60" y="230" font-family="monospace" font-size="12" fill="#569cd6">export</text>
+  <text x="105" y="230" font-family="monospace" font-size="12" fill="#569cd6">default</text>
+  <text x="155" y="230" font-family="monospace" font-size="12" fill="#c8c8c8">Profile;</text>
+  
+  <!-- Grafik Tasarım Öğeleri -->
+  <rect x="600" y="50" width="550" height="200" rx="5" fill="#ffffff" opacity="0.9" />
+  
+  <!-- Yazılım Geliştirme Simgeleri -->
+  <circle cx="650" cy="100" r="30" fill="#61dafb" opacity="0.8" /> <!-- React -->
+  <text x="650" y="105" font-family="Arial" font-size="10" fill="#ffffff" text-anchor="middle">React</text>
+  
+  <circle cx="730" cy="100" r="30" fill="#3178c6" opacity="0.8" /> <!-- TypeScript -->
+  <text x="730" y="105" font-family="Arial" font-size="10" fill="#ffffff" text-anchor="middle">TS</text>
+  
+  <circle cx="810" cy="100" r="30" fill="#f7df1e" opacity="0.8" /> <!-- JavaScript -->
+  <text x="810" y="105" font-family="Arial" font-size="10" fill="#333333" text-anchor="middle">JS</text>
+  
+  <circle cx="890" cy="100" r="30" fill="#e34f26" opacity="0.8" /> <!-- HTML -->
+  <text x="890" y="105" font-family="Arial" font-size="10" fill="#ffffff" text-anchor="middle">HTML</text>
+  
+  <circle cx="970" cy="100" r="30" fill="#264de4" opacity="0.8" /> <!-- CSS -->
+  <text x="970" y="105" font-family="Arial" font-size="10" fill="#ffffff" text-anchor="middle">CSS</text>
+  
+  <circle cx="1050" cy="100" r="30" fill="#339933" opacity="0.8" /> <!-- Node.js -->
+  <text x="1050" y="105" font-family="Arial" font-size="10" fill="#ffffff" text-anchor="middle">Node</text>
+  
+  <!-- Bağlantı Çizgileri -->
+  <line x1="650" y1="130" x2="730" y2="130" stroke="#6c8eaf" stroke-width="2" opacity="0.5" />
+  <line x1="730" y1="130" x2="810" y2="130" stroke="#6c8eaf" stroke-width="2" opacity="0.5" />
+  <line x1="810" y1="130" x2="890" y2="130" stroke="#6c8eaf" stroke-width="2" opacity="0.5" />
+  <line x1="890" y1="130" x2="970" y2="130" stroke="#6c8eaf" stroke-width="2" opacity="0.5" />
+  <line x1="970" y1="130" x2="1050" y2="130" stroke="#6c8eaf" stroke-width="2" opacity="0.5" />
+  
+  <!-- Yazılım Geliştirme Akışı -->
+  <rect x="650" y="170" width="80" height="40" rx="5" fill="#6c8eaf" />
+  <text x="690" y="195" font-family="Arial" font-size="12" fill="#ffffff" text-anchor="middle">Planlama</text>
+  
+  <rect x="750" y="170" width="80" height="40" rx="5" fill="#6c8eaf" />
+  <text x="790" y="195" font-family="Arial" font-size="12" fill="#ffffff" text-anchor="middle">Tasarım</text>
+  
+  <rect x="850" y="170" width="80" height="40" rx="5" fill="#6c8eaf" />
+  <text x="890" y="195" font-family="Arial" font-size="12" fill="#ffffff" text-anchor="middle">Geliştirme</text>
+  
+  <rect x="950" y="170" width="80" height="40" rx="5" fill="#6c8eaf" />
+  <text x="990" y="195" font-family="Arial" font-size="12" fill="#ffffff" text-anchor="middle">Test</text>
+  
+  <rect x="1050" y="170" width="80" height="40" rx="5" fill="#6c8eaf" />
+  <text x="1090" y="195" font-family="Arial" font-size="12" fill="#ffffff" text-anchor="middle">Dağıtım</text>
+  
+  <!-- Bağlantı Okları -->
+  <line x1="730" y1="190" x2="750" y2="190" stroke="#ffffff" stroke-width="2" />
+  <polygon points="745,185 755,190 745,195" fill="#ffffff" />
+  
+  <line x1="830" y1="190" x2="850" y2="190" stroke="#ffffff" stroke-width="2" />
+  <polygon points="845,185 855,190 845,195" fill="#ffffff" />
+  
+  <line x1="930" y1="190" x2="950" y2="190" stroke="#ffffff" stroke-width="2" />
+  <polygon points="945,185 955,190 945,195" fill="#ffffff" />
+  
+  <line x1="1030" y1="190" x2="1050" y2="190" stroke="#ffffff" stroke-width="2" />
+  <polygon points="1045,185 1055,190 1045,195" fill="#ffffff" />
+</svg>

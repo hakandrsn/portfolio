@@ -1,0 +1,70 @@
+{
+  "contactInfo": {
+    "email": "hakan.dursnn@gmail.com",
+    "phone": "+90 534 317 55 65",
+    "location": "İstanbul, Türkiye",
+    "website": "https://hakandrsn.github.io/portfolio/"
+  },
+  "socialMedia": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/hakandrsn",
+      "icon": "github"
+    },
+    {
+      "name": "LinkedIn",
+      "url": "https://linkedin.com/in/hakandursun97",
+      "icon": "linkedin"
+    },
+    {
+      "name": "Twitter",
+      "url": "https://twitter.com/hakandrsnn",
+      "icon": "twitter"
+    },
+    {
+      "name": "Instagram",
+      "url": "https://instagram.com/hakanndrsnn",
+      "icon": "instagram"
+    },
+    {
+      "name": "Medium",
+      "url": "https://medium.com/@hakan.dursnn",
+      "icon": "medium"
+    },
+    {
+      "name": "YouTube",
+      "url": "https://www.youtube.com/@hakandrsnn",
+      "icon": "youtube"
+    },
+    {
+      "name": "Discord",
+      "url": "https://discord.com/users/hakandrsnn",
+      "icon": "discord"
+    }
+  ],
+  "contactText": {
+    "title": "İletişim",
+    "subtitle": "Bir proje hakkında konuşmak, iş birliği yapmak veya sadece merhaba demek için benimle iletişime geçebilirsiniz. Aşağıdaki formu doldurarak veya sosyal medya hesaplarım üzerinden bana ulaşabilirsiniz.",
+    "contactInfoTitle": "İletişim Bilgileri",
+    "socialMediaTitle": "Sosyal Medya",
+    "formTitle": "Bana Mesaj Gönder",
+    "formLabels": {
+      "name": "Adınız",
+      "email": "E-posta Adresiniz",
+      "subject": "Konu",
+      "message": "Mesajınız",
+      "submit": "Mesaj Gönder",
+      "submitting": "Gönderiliyor..."
+    },
+    "formPlaceholders": {
+      "name": "Adınız ve soyadınız",
+      "email": "ornek@email.com",
+      "subject": "Mesajınızın konusu",
+      "message": "Mesajınızı buraya yazın..."
+    },
+    "formStatus": {
+      "success": "Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağım.",
+      "error": "Mesajınız gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin."
+    }
+  }
+}

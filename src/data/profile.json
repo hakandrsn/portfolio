@@ -1,0 +1,198 @@
+{
+  "name": "Hakan Dursun",
+  "title": "Full-Stack Developer",
+  "bio": "Merhaba! Ben Hakan, bir Full-Stack geliştiriciyim. React, React Native ve TypeScript ile kullanıcı dostu arayüzler tasarlıyor, JavaScript & TypeScript ile güçlü backend sistemleri geliştiriyorum. Yenilikçi çözümler üretmeyi, yapay zekayı aktif kullanmayı ve sürekli kendimi geliştirmeyi seviyorum.",
+  "avatar": "/src/assets/images/profile-avatar.svg",
+  "contact": {
+    "email": "hakan.dursnn@gmail.com",
+    "phone": "+90 534 317 55 65",
+    "location": "İstanbul, Türkiye",
+    "website": "https://hakandrsn.github.io/portfolio/"
+  },
+  "social": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/hakandrsn",
+      "icon": "github"
+    },
+    {
+      "name": "LinkedIn",
+      "url": "https://linkedin.com/in/hakandursun97",
+      "icon": "linkedin"
+    },
+    {
+      "name": "Instagram",
+      "url": "https://instagram.com/hakanndrsnn",
+      "icon": "instagram"
+    },
+    {
+      "name": "Medium",
+      "url": "https://medium.com/@hakan.dursnn",
+      "icon": "medium"
+    },
+    {
+      "name": "YouTube",
+      "url": "https://www.youtube.com/@hakandrsnn",
+      "icon": "youtube"
+    }
+  ],
+  "skills": [
+    {
+      "category": "Frontend",
+      "items": [
+        "React",
+        "React Native",
+        "Next.js",
+        "TypeScript",
+        "JavaScript",
+        "HTML5",
+        "CSS3",
+        "Tailwind CSS",
+        "SASS",
+        "Bootstrap",
+        "Bulma",
+        "Redux",
+        "Webpack",
+        "Babel"
+      ]
+    },
+    {
+      "category": "Backend",
+      "items": [
+        "Node.js",
+        "NestJS",
+        "Express",
+        "Spring"
+      ]
+    },
+    {
+      "category": "Mobil",
+      "items": [
+        "React Native"
+      ]
+    },
+    {
+      "category": "Veritabanı",
+      "items": [
+        "MongoDB",
+        "PostgreSQL",
+        "Firebase",
+        "Supabase"
+      ]
+    },
+    {
+      "category": "DevOps & Araçlar",
+      "items": [
+        "Docker",
+        "AWS",
+        "Git",
+        "Heroku",
+        "Postman",
+        "Figma"
+      ]
+    },
+    {
+      "category": "Diğer Teknolojiler",
+      "items": [
+        "Electron",
+        "RabbitMQ",
+        "Kafka",
+        "Jest",
+        "Adapty"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "Joygame Publishing",
+      "position": "Frontend Geliştirici",
+      "period": "2025 - Günümüz",
+      "description": "Joygame Publishing mobil uygulamasının frontend geliştirmesinde çalışıyorum. React Native ile kullanıcı arayüzleri tasarlıyor ve geliştiriyorum.",
+      "technologies": [
+        "React",
+        "React Native",
+        "TypeScript",
+        "NestJS",
+        "MongoDB",
+        "Supabase",
+        "Firebase",
+        "AWS",
+        "App Distribution"
+      ]
+    },
+    {
+      "company": "Eteration",
+      "position": "Software Developer",
+      "period": "2023 - 2025",
+      "description": "React Native ile mobil uygulamalar geliştiriyor, bridge çözümleri ve paketler üzerine çalışıyorum. Backend tarafında ise NestJS kullanarak servisler geliştiriyorum.",
+      "technologies": [
+        "React",
+        "NestJS",
+        "TypeScript",
+        "PostgreSQL",
+        "Docker",
+        "AWS"
+      ]
+    },
+    {
+      "company": "Marsis Bilişim Teknolojileri A.Ş.",
+      "position": "Freelance Geliştirici",
+      "period": "2022 - 2023",
+      "description": "Web ve mobil uygulama geliştirme üzerinde çalıştım. Burada React ve React native kullandım.",
+      "technologies": [
+        "React",
+        "React Native",
+        "MongoDB",
+        "Azure"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Atatür Üniversitesi",
+      "degree": "Elektrik-Elektronik Mühendisliği, Lisans",
+      "period": "2015 - 2020"
+    }
+  ],
+  "interests": [
+    "React",
+    "React Native",
+    "NestJS",
+    "Frontend Geliştirme",
+    "Mobil Uygulama Geliştirme",
+    "AWS",
+    "Linux",
+    "Agile Metodolojiler",
+    "Advance SQL",
+    "Oyun Geliştirme",
+    "Unity",
+    "Unreal Engine"
+  ],
+  "languages": [
+    {
+      "name": "Türkçe",
+      "level": "Anadil"
+    },
+    {
+      "name": "İngilizce",
+      "level": "B1"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AWS Certified Solutions Architect",
+      "issuer": "Amazon Web Services",
+      "date": "2023"
+    },
+    {
+      "name": "Google Cloud Professional Developer",
+      "issuer": "Google",
+      "date": "2022"
+    },
+    {
+      "name": "Microsoft Certified: Azure Developer Associate",
+      "issuer": "Microsoft",
+      "date": "2021"
+    }
+  ]
+}

@@ -1,0 +1,626 @@
+/* Ana Sayfa Stilleri */
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: calc(100vh - 200px);
+}
+
+.home-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.home-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  position: relative;
+  display: inline-block;
+}
+
+.home-title::after {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), transparent);
+  bottom: -10px;
+  left: 25%;
+}
+
+.home-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Sudoku Oyunu Stilleri */
+.sudoku-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.sudoku-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sudoku-title {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.sudoku-timer {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  font-family: monospace;
+  background-color: rgba(var(--primary-color-rgb), 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+.sudoku-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  gap: 2px;
+  background-color: rgba(33, 150, 243, 0.2);
+  border: 3px solid rgba(33, 150, 243, 0.4);
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  padding: 3px;
+}
+
+.sudoku-row {
+  display: flex;
+}
+
+.sudoku-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--card-bg);
+  aspect-ratio: 1;
+  font-size: 1.3rem;
+  font-weight: 500;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(200, 200, 200, 0.3);
+  position: relative;
+}
+
+.sudoku-cell:hover {
+  background-color: rgba(33, 150, 243, 0.15);
+  transform: scale(1.02);
+  z-index: 5;
+  box-shadow: 0 0 5px rgba(33, 150, 243, 0.3);
+}
+
+.sudoku-cell.fixed {
+  color: #1976d2;
+  font-weight: 700;
+  cursor: not-allowed;
+  background-color: rgba(240, 240, 240, 0.7);
+}
+
+.sudoku-cell.selected {
+  background-color: #e3f2fd !important;
+  box-shadow: 0 0 0 3px #2196f3, inset 0 0 0 2px #2196f3 !important;
+  z-index: 10 !important;
+  position: relative;
+  transform: scale(1.05);
+  font-weight: bold;
+  border: 2px solid #1976d2 !important;
+}
+
+.sudoku-cell.error {
+  color: #e74c3c;
+  background-color: rgba(231, 76, 60, 0.15);
+  animation: errorPulse 1.5s infinite;
+}
+
+@keyframes errorPulse {
+  0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.4); }
+  70% { box-shadow: 0 0 0 5px rgba(231, 76, 60, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+}
+
+.sudoku-cell.same-value {
+  background-color: rgba(33, 150, 243, 0.1);
+}
+
+/* 3x3 kutu sınırları - daha belirgin */
+.sudoku-row:nth-child(3n) {
+  border-bottom: 3px solid rgba(25, 118, 210, 0.5);
+}
+
+.sudoku-row:last-child {
+  border-bottom: none;
+}
+
+.sudoku-cell:nth-child(3n) {
+  border-right: 3px solid rgba(25, 118, 210, 0.5);
+}
+
+.sudoku-cell:nth-child(9n) {
+  border-right: none;
+}
+
+.sudoku-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Sudoku sayılar kısmı */
+.sudoku-numbers {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+  background-color: #f0f0f0;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.sudoku-number {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sudoku-number:hover {
+  background-color: #2196f3;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
+}
+
+.sudoku-number:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+/* Sudoku aksiyonlar kısmı */
+.sudoku-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.sudoku-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.2rem;
+  background-color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #555;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sudoku-button:hover {
+  background-color: #f5f5f5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #2196f3;
+}
+
+.sudoku-button:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.number-pad {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+  background-color: #f0f0f0;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.number-button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #333;
+  flex: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0 2px;
+}
+
+.number-button:hover {
+  background-color: #2196f3;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
+}
+
+.number-button:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.number-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.control-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.control-button {
+  padding: 0.8rem;
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  color: #555;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.control-button:hover {
+  background-color: #f5f5f5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #2196f3;
+}
+
+.control-button:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.control-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.game-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.completed {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #27ae60;
+}
+
+.sudoku-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.sudoku-modal-content {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+}
+
+.sudoku-modal-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.sudoku-modal-message {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: var(--text-secondary);
+}
+
+.sudoku-modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Tebrik animasyonu */
+.celebration-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+  animation: fadeOut 3s forwards;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #2196f3;
+  border-radius: 50%;
+  animation: confettiFall 3s ease-out forwards;
+}
+
+.confetti:nth-child(2n) {
+  background-color: #4caf50;
+  width: 7px;
+  height: 7px;
+}
+
+.confetti:nth-child(3n) {
+  background-color: #ff9800;
+  width: 12px;
+  height: 12px;
+}
+
+.confetti:nth-child(4n) {
+  background-color: #e91e63;
+  width: 8px;
+  height: 8px;
+}
+
+.confetti:nth-child(5n) {
+  background-color: #9c27b0;
+  width: 9px;
+  height: 9px;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(calc(100vh - 100px)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0%, 80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.sudoku-status.success {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #2e7d32;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  animation: successPulse 2s infinite;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+@keyframes successPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  .sudoku-cell {
+    font-size: 1rem;
+  }
+  
+  .number-button,
+  .control-button {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  
+  .sudoku-game {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sudoku-board {
+    width: 100%;
+  }
+  
+  .sudoku-controls {
+    width: 100%;
+  }
+}
+
+/* Yetenekler bölümü */
+.home-content {
+  margin-top: 3rem;
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.skill-category {
+  flex: 1;
+  min-width: 200px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.skill-category h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.2rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+.skill-category ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-category li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 1rem;
+  color: #555;
+}
+
+@media (max-width: 480px) {
+  .sudoku-cell {
+    font-size: 0.8rem;
+  }
+  
+  .number-button,
+  .control-button {
+    width: 35px;
+    height: 35px;
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+  
+  .number-pad {
+    gap: 0.3rem;
+  }
+  
+  .control-buttons {
+    gap: 0.3rem;
+  }
+  
+  .home-container {
+    padding: 1rem;
+  }
+  
+  .sudoku-container {
+    padding: 0.5rem;
+  }
+  
+  .game-status {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .sudoku-numbers {
+    grid-template-columns: repeat(9, 1fr);
+  }
+  
+  .sudoku-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .sudoku-button {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
