@@ -3,6 +3,7 @@ import type { FormEvent, ChangeEvent } from 'react';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin, FaTwitter, FaMedium, FaDiscord, FaPaperPlane, FaInstagram, FaYoutube } from 'react-icons/fa';
 import '../styles/Contact.css';
 import contactData from '../data/contact.json';
+import { sendMessage } from '../../firebase';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -44,27 +45,87 @@ function Contact() {
     setFormStatus({ type: null, message: '' });
     
     try {
-      // E-posta gönderme işlemi burada gerçekleştirilecek
-      // Örnek olarak, formData'yı kullanarak bir e-posta servisi entegrasyonu yapılabilir
-      // Şimdilik sadece simüle ediyoruz
+      console.log('Form verisi gönderiliyor:', formData);
       
-      // Simüle edilmiş bir gecikme
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Mesaj gönderme sıklığını kontrol et
+      const lastSubmitTime = localStorage.getItem('lastMessageSubmitTime');
+      const currentTime = new Date().getTime();
+      const cooldownTime = 5 * 60 * 1000; // 5 dakika (milisaniye cinsinden)
       
-      // Başarılı yanıt
-      setFormStatus({
-        type: 'success',
-        message: contactData.contactText.formStatus.success
+      // Günlük mesaj limitini kontrol et
+      const today = new Date().toDateString();
+      const lastMessageDate = localStorage.getItem('lastMessageDate');
+      const dailyMessageCount = lastMessageDate === today 
+        ? parseInt(localStorage.getItem('dailyMessageCount') || '0') 
+        : 0;
+      
+      if (lastSubmitTime && currentTime - parseInt(lastSubmitTime) < cooldownTime) {
+        // Bekleme süresi içinde yeni mesaj gönderme durumunda hata ver
+        const remainingTime = Math.ceil((parseInt(lastSubmitTime) + cooldownTime - currentTime) / 60000);
+        setFormStatus({
+          type: 'error',
+          message: `Lütfen yeni bir mesaj göndermeden önce en az ${remainingTime} dakika bekleyin.`
+        });
+        setIsSubmitting(false);
+        return;
+      }
+      
+      // Günlük mesaj limitini kontrol et (günde en fazla 3 mesaj)
+      if (dailyMessageCount >= 3) {
+        setFormStatus({
+          type: 'error',
+          message: 'Günlük mesaj gönderme limitine ulaştınız. Lütfen yarın tekrar deneyin.'
+        });
+        setIsSubmitting(false);
+        return;
+      }
+      
+      // Firebase'e mesaj gönderme
+      const result = await sendMessage({
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message
       });
       
-      // Formu sıfırla
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
+      console.log('Firebase yanıtı:', result);
+      
+      if (result.success) {
+        // Başarılı yanıt
+        setFormStatus({
+          type: 'success',
+          message: contactData.contactText.formStatus.success
+        });
+        
+        // Son mesaj gönderme zamanını kaydet
+        localStorage.setItem('lastMessageSubmitTime', currentTime.toString());
+        
+        // Günlük mesaj sayısını güncelle
+        const today = new Date().toDateString();
+        const lastMessageDate = localStorage.getItem('lastMessageDate');
+        const dailyMessageCount = lastMessageDate === today 
+          ? parseInt(localStorage.getItem('dailyMessageCount') || '0') 
+          : 0;
+        
+        localStorage.setItem('lastMessageDate', today);
+        localStorage.setItem('dailyMessageCount', (dailyMessageCount + 1).toString());
+        
+        // Formu sıfırla
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        console.error('Firebase hatası:', result.error);
+        setFormStatus({
+          type: 'error',
+          message: `Mesajınız gönderilirken bir hata oluştu: ${result.error}`
+        });
+      }
     } catch (error) {
+      console.error('Error submitting form:', error);
       setFormStatus({
         type: 'error',
         message: contactData.contactText.formStatus.error

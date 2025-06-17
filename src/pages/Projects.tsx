@@ -4,6 +4,9 @@ import '../styles/Projects.css';
 // Proje verilerini doğrudan import ediyoruz
 import projectsJson from '../data/projects.json';
 
+// Vite için resim importları
+import { resolveImagePath } from '../utils/imageUtils';
+
 // Proje tipi tanımı
 interface Project {
   id: number;
@@ -75,11 +78,12 @@ function Projects() {
               
               <div className="project-image-container">
                 <img 
-                  src={project.image} 
+                  src={resolveImagePath(project.image)} 
                   alt={project.title} 
                   className="project-image" 
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
+                    console.error(`Resim yüklenemedi: ${project.image}`);
                     // Boş bir string atayarak görüntü yükleme denemesini durdur
                     target.src = '';
                     // Hata tekrarını önlemek için onerror'ı temizle
