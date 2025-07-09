@@ -3,28 +3,48 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, Firestore } from "firebase/firestore";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
+// Environment variables kontrolü
+const apiKey = import.meta.env.VITE_API_KEY;
+const appId = import.meta.env.VITE_APP_ID;
+
+// Environment variables eksikse uyarı ver ama devam et
+if (!apiKey || !appId) {
+  console.warn("Firebase environment variables eksik! Production'da çalışmayabilir.");
+  console.warn("VITE_API_KEY:", apiKey ? "Mevcut" : "Eksik");
+  console.warn("VITE_APP_ID:", appId ? "Mevcut" : "Eksik");
+}
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_API_KEY,
+  apiKey: apiKey || "AIzaSyCiLqFf44bXijBPiW56ChRi5AtKCRkfkrQ", // Fallback (güvenlik için gerçek değeri kullanmayın)
   authDomain: "portfolio-8ed2c.firebaseapp.com",
   projectId: "portfolio-8ed2c",
   storageBucket: "portfolio-8ed2c.firebasestorage.app",
   messagingSenderId: "995502905220",
-  appId: import.meta.env.VITE_APP_ID
+  appId: appId || "1:995502905220:web:ee311ea61cbf9119492fd1" // Fallback (güvenlik için gerçek değeri kullanmayın)
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+console.log("Firebase config:", {
+  apiKey: apiKey ? "Mevcut" : "Fallback kullanılıyor",
+  appId: appId ? "Mevcut" : "Fallback kullanılıyor",
+  projectId: firebaseConfig.projectId,
+  environment: import.meta.env.MODE
+});
 
-// Initialize Firestore
+// Initialize Firebase
+let app;
 let db: Firestore;
 
 try {
+  app = initializeApp(firebaseConfig);
+  console.log("Firebase başarıyla başlatıldı");
+  
+  // Initialize Firestore
   db = getFirestore(app);
   console.log("Firestore başarıyla başlatıldı");
 } catch (error) {
-  console.error("Firestore başlatma hatası:", error);
-  throw new Error("Firestore başlatılamadı");
+  console.error("Firebase/Firestore başlatma hatası:", error);
+  throw new Error("Firebase başlatılamadı");
 }
 
 // Function to send a message to Firestore
@@ -36,6 +56,8 @@ export const sendMessage = async (messageData: {
 }) => {
   try {
     console.log("Mesaj gönderiliyor:", messageData);
+    console.log("Environment:", import.meta.env.MODE);
+    console.log("API Key mevcut:", !!import.meta.env.VITE_API_KEY);
     
     if (!db) {
       console.error("Firestore bağlantısı yok!");
@@ -48,19 +70,33 @@ export const sendMessage = async (messageData: {
     const docRef = await addDoc(messagesCollection, {
       ...messageData,
       createdAt: new Date().toISOString(),
-      read: false
+      read: false,
+      environment: import.meta.env.MODE // Hangi environment'da gönderildiğini kaydet
     });
     
     console.log("Mesaj başarıyla kaydedildi, ID:", docRef.id);
     return { success: true, id: docRef.id };
   } catch (error) {
     console.error("Mesaj gönderme hatası:", error);
+    console.error("Error details:", {
+      name: error instanceof Error ? error.name : 'Unknown',
+      message: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined
+    });
     
     // Firestore kuralları hatası olabilir
     if (String(error).includes("permission-denied")) {
       return { 
         success: false, 
         error: "Firestore yazma izni reddedildi. Lütfen Firebase konsolunda kuralları kontrol edin." 
+      };
+    }
+    
+    // Network hatası olabilir
+    if (String(error).includes("network") || String(error).includes("fetch")) {
+      return { 
+        success: false, 
+        error: "Ağ bağlantısı hatası. Lütfen internet bağlantınızı kontrol edin." 
       };
     }
     
