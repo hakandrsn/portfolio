@@ -3,33 +3,16 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, Firestore } from "firebase/firestore";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Environment variables kontrolü
-const apiKey = import.meta.env.VITE_API_KEY;
-const appId = import.meta.env.VITE_APP_ID;
-
-// Environment variables eksikse uyarı ver ama devam et
-if (!apiKey || !appId) {
-  console.warn("Firebase environment variables eksik! Production'da çalışmayabilir.");
-  console.warn("VITE_API_KEY:", apiKey ? "Mevcut" : "Eksik");
-  console.warn("VITE_APP_ID:", appId ? "Mevcut" : "Eksik");
-}
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: apiKey || "AIzaSyCiLqFf44bXijBPiW56ChRi5AtKCRkfkrQ", // Fallback (güvenlik için gerçek değeri kullanmayın)
+  apiKey:"AIzaSyCiLqFf44bXijBPiW56ChRi5AtKCRkfkrQ", // Fallback (güvenlik için gerçek değeri kullanmayın)
   authDomain: "portfolio-8ed2c.firebaseapp.com",
   projectId: "portfolio-8ed2c",
   storageBucket: "portfolio-8ed2c.firebasestorage.app",
   messagingSenderId: "995502905220",
-  appId: appId || "1:995502905220:web:ee311ea61cbf9119492fd1" // Fallback (güvenlik için gerçek değeri kullanmayın)
+  appId: "1:995502905220:web:ee311ea61cbf9119492fd1" // Fallback (güvenlik için gerçek değeri kullanmayın)
 };
-
-console.log("Firebase config:", {
-  apiKey: apiKey ? "Mevcut" : "Fallback kullanılıyor",
-  appId: appId ? "Mevcut" : "Fallback kullanılıyor",
-  projectId: firebaseConfig.projectId,
-  environment: import.meta.env.MODE
-});
 
 // Initialize Firebase
 let app;
@@ -56,8 +39,7 @@ export const sendMessage = async (messageData: {
 }) => {
   try {
     console.log("Mesaj gönderiliyor:", messageData);
-    console.log("Environment:", import.meta.env.MODE);
-    console.log("API Key mevcut:", !!import.meta.env.VITE_API_KEY);
+    
     
     if (!db) {
       console.error("Firestore bağlantısı yok!");
@@ -71,7 +53,7 @@ export const sendMessage = async (messageData: {
       ...messageData,
       createdAt: new Date().toISOString(),
       read: false,
-      environment: import.meta.env.MODE // Hangi environment'da gönderildiğini kaydet
+      environment: "production" 
     });
     
     console.log("Mesaj başarıyla kaydedildi, ID:", docRef.id);
