@@ -1,9 +1,7 @@
-import { useMediaQuery } from '../hooks/useMediaQuery';
 import '../styles/About.css';
 import { FaCode, FaLaptopCode, FaGraduationCap, FaBookReader } from 'react-icons/fa';
 
 function About() {
-  const isMobile = useMediaQuery('(max-width: 768px)');
   
   return (
     <div className="about-container">
