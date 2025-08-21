@@ -1,7 +1,6 @@
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGlobe, FaGithub, FaLinkedin, FaTwitter, FaUser, FaCode, FaBriefcase, FaGraduationCap, FaCertificate, FaLanguage, FaHeart } from 'react-icons/fa';
 import '../styles/Profile.css';
 import profileAvatar from '../assets/images/profile-avatar.svg';
-import type { ProfileData } from '../types/profile';
 import { useProfile } from '../hooks/useFirebaseData';
 
 function Profile() {
@@ -88,7 +87,7 @@ function Profile() {
           </div>
           
           <div className="profile-social">
-            {profileData.social.map((item, index) => (
+            {profileData.social.map((item: any, index: number) => (
               <a 
                 key={index} 
                 href={item.url} 
@@ -109,11 +108,11 @@ function Profile() {
               <div className="profile-section">
                 <h2 className="section-title"><FaCode className="section-icon" /> Beceriler</h2>
                 <div className="skills-list">
-                  {profileData.skills.map((skillGroup, index) => (
+                  {profileData.skills.map((skillGroup: any, index: number) => (
                     <div key={index} className="skill-group">
                       <h4 className="skill-category">{skillGroup.category}</h4>
                       <div className="skill-items">
-                        {skillGroup.items.map((skill, skillIndex) => (
+                        {skillGroup.items.map((skill: any, skillIndex: number) => (
                           <span key={skillIndex} className="skill-tag">{skill}</span>
                         ))}
                       </div>
@@ -128,7 +127,7 @@ function Profile() {
             <div className="profile-section">
               <h3 className="section-title"><FaLanguage className="section-icon" /> Diller</h3>
               <div className="languages-list">
-                {profileData.languages.map((language, index) => (
+                {profileData.languages.map((language: any, index: number) => (
                   <div key={index} className="language-item">
                     <span className="language-name">{language.name}</span>
                     <span className="language-level">{language.level}</span>
@@ -141,7 +140,7 @@ function Profile() {
             <div className="profile-section">
               <h3 className="section-title"><FaHeart className="section-icon" /> İlgi Alanları</h3>
               <div className="interests-list">
-                {profileData.interests.map((interest, index) => (
+                {profileData.interests.map((interest: any, index: number) => (
                   <span key={index} className="interest-item">{interest}</span>
                 ))}
               </div>
@@ -153,14 +152,14 @@ function Profile() {
             <div className="profile-section">
               <h3 className="section-title"><FaBriefcase className="section-icon" /> Deneyim</h3>
               <div className="experience-list">
-                {profileData.experience.map((exp, index) => (
+                {profileData.experience.map((exp: any, index: number) => (
                   <div key={index} className="experience-item">
                     <h4 className="experience-company"><FaUser className="item-icon" /> {exp.company}</h4>
                     <p className="experience-position"><FaBriefcase className="item-icon" /> {exp.position}</p>
                     <p className="experience-period"><FaGlobe className="item-icon" /> {exp.period}</p>
                     <p className="experience-description">{exp.description}</p>
                     <div className="experience-technologies">
-                      {exp.technologies.map((tech, techIndex) => (
+                      {exp.technologies.map((tech: any, techIndex: number) => (
                         <span key={techIndex} className="skill-tag">{tech}</span>
                       ))}
                     </div>
@@ -173,7 +172,7 @@ function Profile() {
             <div className="profile-section">
               <h3 className="section-title"><FaGraduationCap className="section-icon" /> Eğitim</h3>
               <div className="education-list">
-                {profileData.education.map((edu, index) => (
+                {profileData.education.map((edu: any, index: number) => (
                   <div key={index} className="education-item">
                     <h4 className="education-institution"><FaGraduationCap className="item-icon" /> {edu.institution}</h4>
                     <p className="education-degree"><FaCode className="item-icon" /> {edu.degree}</p>
@@ -187,7 +186,7 @@ function Profile() {
             <div className="profile-section">
               <h3 className="section-title"><FaCertificate className="section-icon" /> Sertifikalar</h3>
               <div className="certification-list">
-                {profileData.certifications.map((cert, index) => (
+                {profileData.certifications.map((cert: any, index: number) => (
                   <div key={index} className="certification-item">
                     <h4 className="certification-name"><FaCertificate className="item-icon" /> {cert.name}</h4>
                     <p className="certification-issuer"><FaUser className="item-icon" /> {cert.issuer}</p>

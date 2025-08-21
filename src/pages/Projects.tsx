@@ -21,10 +21,6 @@ interface Project {
   category: string;
 }
 
-interface ProjectsData {
-  projects: Project[];
-}
-
 function Projects() {
   // State tanımlamaları
   const [filter, setFilter] = useState<string>('Tümü');
@@ -68,10 +64,10 @@ function Projects() {
   }
   
   // Kategorileri hesapla
-  const categories = ['Tümü', ...Array.from(new Set(projectsData.projects.map(project => project.category)))];
+  const categories = ['Tümü', ...Array.from(new Set(projectsData.projects.map((project: Project) => project.category)))] as string[];
   
   // Projeleri filtrele
-  const filteredProjects = projectsData.projects.filter(project => 
+  const filteredProjects = projectsData.projects.filter((project: Project) => 
     filter === 'Tümü' ? true : project.category === filter
   );
 
@@ -85,7 +81,7 @@ function Projects() {
       </div>
       
       <div className="projects-filter">
-        {categories.map(category => (
+        {categories.map((category: string) => (
           <button
             key={category}
             className={`filter-button ${filter === category ? 'active' : ''}`}
@@ -102,7 +98,7 @@ function Projects() {
         </div>
       ) : (
         <div className="projects-grid">
-          {filteredProjects.map(project => (
+          {filteredProjects.map((project: Project) => (
             <div key={project.id} className="project-card">
               {project.featured && <div className="featured-badge">Öne Çıkan</div>}
               <div className="project-category">{project.category}</div>
@@ -128,7 +124,7 @@ function Projects() {
                 <p className="project-description">{project.description}</p>
                 
                 <div className="project-technologies">
-                  {project.technologies.map((tech, index) => (
+                  {project.technologies.map((tech: string, index: number) => (
                     <span key={index} className="project-tech">
                       <FaCode className="tech-icon" /> {tech}
                     </span>

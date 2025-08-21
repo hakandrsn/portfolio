@@ -215,7 +215,7 @@ function Contact() {
           
           <h2 className="contact-info-title" style={{ marginTop: '2rem' }}>{contactData.contactText.socialMediaTitle}</h2>
           <div className="social-links">
-            {contactData.socialMedia.map((social, index) => (
+            {contactData.socialMedia.map((social: any, index: number) => (
               <a 
                 key={index}
                 href={social.url} 

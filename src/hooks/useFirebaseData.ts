@@ -16,7 +16,22 @@ export const useProfile = () => {
       }
       
       const doc = querySnapshot.docs[0];
-      return { id: doc.id, ...doc.data() };
+      const data = doc.data() as any;
+      return {
+        id: doc.id,
+        name: data.name,
+        title: data.title,
+        bio: data.bio,
+        avatar: data.avatar,
+        contact: data.contact,
+        social: data.social,
+        skills: data.skills,
+        experience: data.experience,
+        education: data.education,
+        interests: data.interests,
+        languages: data.languages,
+        certifications: data.certifications
+      };
     },
     staleTime: 24 * 60 * 60 * 1000, // 1 gün
     gcTime: 24 * 60 * 60 * 1000, // 1 gün
@@ -37,7 +52,11 @@ export const useProjects = () => {
       }
       
       const doc = querySnapshot.docs[0];
-      return { id: doc.id, ...doc.data() };
+      const data = doc.data() as any;
+      return {
+        id: doc.id,
+        projects: data.projects
+      };
     },
     staleTime: 24 * 60 * 60 * 1000, // 1 gün
     gcTime: 24 * 60 * 60 * 1000, // 1 gün
@@ -58,7 +77,7 @@ export const useContact = () => {
       }
       
       const doc = querySnapshot.docs[0];
-      const data = doc.data();
+      const data = doc.data() as any;
       return {
         id: doc.id,
         contactInfo: data.contactInfo,
