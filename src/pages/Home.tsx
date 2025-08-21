@@ -429,6 +429,7 @@ function Home() {
           <p>Sudoku yükleniyor...</p>
         </div>
       )}
+      
     </div>
   );
 }

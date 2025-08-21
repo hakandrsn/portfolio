@@ -1,26 +1,11 @@
-import { useState, useEffect } from 'react';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGlobe, FaGithub, FaLinkedin, FaTwitter, FaUser, FaCode, FaBriefcase, FaGraduationCap, FaCertificate, FaLanguage, FaHeart } from 'react-icons/fa';
 import '../styles/Profile.css';
 import profileAvatar from '../assets/images/profile-avatar.svg';
 import type { ProfileData } from '../types/profile';
+import { useProfile } from '../hooks/useFirebaseData';
 
 function Profile() {
-  const [profileData, setProfileData] = useState<ProfileData | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    import('../data/profile.json')
-      .then(data => {
-        setProfileData(data.default);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error('Profil verisi yüklenirken hata oluştu:', err);
-        setError('Profil verisi yüklenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
-        setLoading(false);
-      });
-  }, []);
+  const { data: profileData, isLoading: loading, error } = useProfile();
 
   const getSocialIcon = (iconName: string) => {
     switch (iconName) {
@@ -56,7 +41,7 @@ function Profile() {
         <div className="profile-content-wrapper">
           <div className="error-message">
             <h2>Hata!</h2>
-            <p>{error}</p>
+            <p>{error instanceof Error ? error.message : 'Profil verisi yüklenirken bir hata oluştu'}</p>
           </div>
         </div>
       </div>

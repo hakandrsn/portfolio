@@ -2,10 +2,12 @@ import { useState } from 'react';
 import type { FormEvent, ChangeEvent } from 'react';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin, FaTwitter, FaMedium, FaDiscord, FaPaperPlane, FaInstagram, FaYoutube } from 'react-icons/fa';
 import '../styles/Contact.css';
-import contactData from '../data/contact.json';
+import { useContact } from '../hooks/useFirebaseData';
 import { sendMessage } from '../../firebase';
 
 function Contact() {
+  const { data: contactData, isLoading, error } = useContact();
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -30,6 +32,41 @@ function Contact() {
     youtube: <FaYoutube />,
     discord: <FaDiscord />
   };
+  
+  // Loading durumu
+  if (isLoading) {
+    return (
+      <div className="contact-container">
+        <div className="loading-spinner">
+          <div className="spinner"></div>
+          <p>İletişim bilgileri yükleniyor...</p>
+        </div>
+      </div>
+    );
+  }
+  
+  // Hata durumu
+  if (error) {
+    return (
+      <div className="contact-container">
+        <div className="error-message">
+          <h2>Hata!</h2>
+          <p>{error instanceof Error ? error.message : 'İletişim bilgileri yüklenirken bir hata oluştu'}</p>
+        </div>
+      </div>
+    );
+  }
+  
+  if (!contactData) {
+    return (
+      <div className="contact-container">
+        <div className="error-message">
+          <h2>Veri Bulunamadı</h2>
+          <p>İletişim bilgileri bulunamadı.</p>
+        </div>
+      </div>
+    );
+  }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;

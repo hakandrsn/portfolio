@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { FaGithub, FaExternalLinkAlt, FaCode, FaFilter } from 'react-icons/fa';
 import '../styles/Projects.css';
-// Proje verilerini doğrudan import ediyoruz
-import projectsJson from '../data/projects.json';
+import { useProjects } from '../hooks/useFirebaseData';
 
 // Vite için resim importları
 import { resolveImagePath } from '../utils/imageUtils';
@@ -29,10 +28,44 @@ interface ProjectsData {
 function Projects() {
   // State tanımlamaları
   const [filter, setFilter] = useState<string>('Tümü');
-  // Loading durumunu kaldırdık
   
-  // JSON'dan projeleri al
-  const projectsData: ProjectsData = projectsJson;
+  // Firebase'den projeleri al
+  const { data: projectsData, isLoading, error } = useProjects();
+  
+  // Loading durumu
+  if (isLoading) {
+    return (
+      <div className="projects-container">
+        <div className="loading-spinner">
+          <div className="spinner"></div>
+          <p>Projeler yükleniyor...</p>
+        </div>
+      </div>
+    );
+  }
+  
+  // Hata durumu
+  if (error) {
+    return (
+      <div className="projects-container">
+        <div className="error-message">
+          <h2>Hata!</h2>
+          <p>{error instanceof Error ? error.message : 'Projeler yüklenirken bir hata oluştu'}</p>
+        </div>
+      </div>
+    );
+  }
+  
+  if (!projectsData) {
+    return (
+      <div className="projects-container">
+        <div className="error-message">
+          <h2>Veri Bulunamadı</h2>
+          <p>Proje verisi bulunamadı.</p>
+        </div>
+      </div>
+      );
+  }
   
   // Kategorileri hesapla
   const categories = ['Tümü', ...Array.from(new Set(projectsData.projects.map(project => project.category)))];
@@ -41,8 +74,6 @@ function Projects() {
   const filteredProjects = projectsData.projects.filter(project => 
     filter === 'Tümü' ? true : project.category === filter
   );
-
-  // Loading durumunu tamamen kaldırdık
 
   return (
     <div className="projects-container">

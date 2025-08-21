@@ -1,0 +1,37 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Messages koleksiyonu için özel kurallar
+    match /messages/{messageId} {
+      // Herkesin mesaj oluşturmasına izin ver
+      allow create: if true;
+      
+      // Okuma, güncelleme ve silme işlemlerini engelle
+      allow read, update, delete: if false;
+    }
+    
+    // Profile koleksiyonu için okuma izni
+    match /profile/{documentId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    
+    // Projects koleksiyonu için okuma izni
+    match /projects/{documentId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    
+    // Contact koleksiyonu için okuma izni
+    match /contact/{documentId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    
+    // Diğer tüm koleksiyonlar için erişimi engelle
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
